@@ -12,8 +12,10 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
-                env 
+                sh """
+                    echo 'Testing..'
+                    env 
+                """
             }
         }
         stage('Deploy') {
