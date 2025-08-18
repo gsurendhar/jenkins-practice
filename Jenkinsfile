@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    agent any 
+    environment {
+        COURSE= 'Jenkins'
+    }
 
     stages {
         stage('Build') {
@@ -10,12 +13,12 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                env 
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                exit 1
             }
         }
     }
