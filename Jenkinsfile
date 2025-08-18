@@ -4,7 +4,7 @@ pipeline {
         COURSE= 'Jenkins'
     }
     options{
-        timeout(time:20, unit: 'SECONDS')
+        timeout(time:30, unit: 'MINUTES')
     }
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
@@ -34,13 +34,19 @@ pipeline {
             }
         }
         stage('Deploy') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
             steps {
                 echo 'Deploying....'
                 echo "hello ${params.PERSON}"
                 echo "Biography: ${params.BIOGRAPHY}"
                 echo "Toggle: ${params.TOGGLE}"
                 echo "Choice: ${params.CHOICE}"
-                echo "Password: ${params.PASSWORD}"
             }
         }
     }
