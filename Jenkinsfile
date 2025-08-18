@@ -3,6 +3,9 @@ pipeline {
     environment {
         COURSE= 'Jenkins'
     }
+    options{
+        timeout(time:2, unit: 'SECONDS')
+    }
 
     stages {
         stage('Build') {
