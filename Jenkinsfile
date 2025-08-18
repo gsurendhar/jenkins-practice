@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh """
                     echo 'Testing..'
-                    // env 
+                    # env 
                     sleep 10
                 """
             }
